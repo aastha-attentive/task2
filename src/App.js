@@ -3,7 +3,7 @@ import './App.css';
 import Home from './Components/Home';
 import Navbar from './Components/Navbar';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import DeletedTasks from './Components/DeletedTasks';
+import DeletedTasks from './Components/DeletedTasks/DeletedTasks';
 
 function App() {
   return (
