@@ -1,0 +1,194 @@
+*{
+    margin: 0px;
+    padding: 0px;
+  }
+  html {
+    font-size: 62.5%;
+  }
+  ul{
+    width: 100vw;
+    height: 5rem;
+    list-style-type: none;
+   
+    background-color: rgb(27, 30, 119);
+  }
+  li{
+    text-align: center;
+    float: left;
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    text-decoration: none;
+  }
+  .delete{
+    float:right;
+  }
+  .createb1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    margin: 1.5rem;
+  }
+  .createb1 button{
+    font-size: 1.6rem;
+    padding: .3rem;
+    background-color: rgb(157, 192, 232);
+    
+  }
+  
+  /* home */
+  
+  .blur-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2rem 4rem 2rem 4rem;
+    justify-content: space-around;
+    filter: blur(0.3rem);
+  
+  }
+  .container{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2rem 4rem 2rem 4rem;
+    justify-content: space-around;
+  
+  }
+  .boxes{
+    text-align: center;
+    height: auto;
+    width: 42rem;
+    
+  }
+  .task{
+    
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+   
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    margin-top: 0.6rem;
+    margin-bottom: 0.7rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    min-width: 40rem;
+    word-break: break-word;
+    align-items: center;
+  }
+  .boxes h1{
+    margin: 1rem;
+    padding: 1rem;
+    background-color: rgb(114, 221, 114);
+    border-radius: 5px;
+  }
+  .boxes-h{
+    padding: 0.2rem;
+    border-radius: 2%;
+  }
+  .add-btn{
+    
+    color: black;
+    font-size: 2.2rem;
+  }
+  .taskd{
+    height: 15rem;
+    width: 15rem;
+    background-color:bisque;
+  }
+  .todo-h{
+    flex: 70%;
+    font-size: 2rem;
+  }
+  
+  .todo-btn {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  /* createtask */
+  .hide-form {
+    visibility: hidden;
+  }
+  .form-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    margin-top: -80px;
+    box-sizing: border-box;
+    
+  }
+  .main-form{
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+    font-size: 1.8rem;
+   
+  }
+  .child-form{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .child-form label{
+    flex: 20%;
+  }
+  .btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .btn button{
+    background-color: rgb(76, 76, 203);
+    font-size: 1.4rem;
+    padding: .3rem;
+    border-radius: 7px;
+  }
+  .filterbox{
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-left: 2rem;
+  }
+  .filterbox input{
+    width: 30rem;
+    font-size: 1.7rem;
+    padding: .4rem;
+  }
+  .filterbox button{
+    width: 15rem;
+    font-size: 1.7rem;
+    padding: .2rem;
+    font-size: 2rem;
+    background-color: rgb(143, 143, 235);
+  }
+  
+  /* DeleteTask */
+  .deleteContainer{
+    margin-top: 1.5rem;
+    display: flex;
+   flex-direction: column;
+   text-align: center;
+   gap: 1.7rem;
+  }
+  .dtasks{
+    display: flex;
+    padding: 1rem;
+    background-color: aqua;
+    flex-direction: column;
+    border: 2px;
+    gap: 1rem;
+  }
+  .deletedtask{
+    display: flex;
+    flex-direction: row;
+    font-size: 2rem;
+    justify-content: space-around;
+  }
