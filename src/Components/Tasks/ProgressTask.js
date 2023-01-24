@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import {useDrag} from "react-dnd";
 
 const ProgressTask = ({task,setTaskData,setTaskid}) => {
+  const ele=task.id;
   
   function deleteTask(id){
     swal({
@@ -24,6 +25,7 @@ const ProgressTask = ({task,setTaskData,setTaskid}) => {
     // Adding Drag effect 
     const [{ isDragging }, drag] = useDrag(() => ({
       type: 'CARD',
+      item: {task},
       collect: (monitor) => ({
         isDragging: !!monitor.isDragging()
       })

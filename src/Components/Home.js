@@ -1,5 +1,5 @@
 import { useState,useEffect,createContext } from "react";
-import { getListTask } from "../service/localStorage";
+import { editTask, getListTask } from "../service/localStorage";
 import CompTask from "./Tasks/CompletedTask";
 import CreateTask from "./CreateTask";
 import ProgressTask from "./Tasks/ProgressTask";
@@ -7,7 +7,7 @@ import TodoTask from "./Tasks/TodoTask";
 import { useDrop } from "react-dnd";
 
 // export const CardContext = createContext({
-//   markAsDone: (id) => {},
+//    markAsDone: (id) => {},
 // });
 
 
@@ -60,19 +60,54 @@ const Home = () => {
   }, []);
 
 
-  //   //changing status of task after droping task
-  // const markAsDone = (status) => {
-  //   console.log(status);
-  // }
+  //changing status of task after droping task
+  const DragtoCompleted = ({task}) => {
+      const draggedTask= taskData.filter((ele)=> ele.id===task.id)[0];
+      draggedTask.statuss="completed";
+      console.log(draggedTask);
+      editTask(task.id,draggedTask);
+      setTaskData(getListTask);
+  }
+  const DragtoTodo = ({task}) => {
+    const draggedTask= taskData.filter((ele)=> ele.id===task.id)[0];
+    draggedTask.statuss="assigned";
+    console.log(draggedTask);
+    editTask(task.id,draggedTask);
+    setTaskData(getListTask);
+  }
+  const DragtoProgress = ({task}) => {
+    const draggedTask= taskData.filter((ele)=> ele.id===task.id)[0];
+    draggedTask.statuss="progress";
+    console.log(draggedTask);
+    editTask(task.id,draggedTask);
+    setTaskData(getListTask);
+  }
     
   //Adding Drag functionality 
-  const [{isOver}, drop] = useDrop(() => ({
+  const [{isOver1}, drop1] = useDrop(() => ({
     accept: 'CARD',
-    drop:(item,monitor) => console.log(item),
+    drop:(item,monitor) => DragtoCompleted(item),
     collect:(monitor) => ({
       isOver: !!monitor.isOver(),
     })
   }));
+
+  const [{isOver2}, drop2] = useDrop(() => ({
+    accept: 'CARD',
+    drop:(item,monitor) => DragtoTodo(item),
+    collect:(monitor) => ({
+      isOver: !!monitor.isOver(),
+    })
+  }));
+  
+  const [{isOver3}, drop3] = useDrop(() => ({
+    accept: 'CARD',
+    drop:(item,monitor) => DragtoProgress(item),
+    collect:(monitor) => ({
+      isOver: !!monitor.isOver(),
+    })
+  }));
+  
   
 
 
@@ -92,7 +127,7 @@ const Home = () => {
         {/* div for completed task */}
         <div className="boxes">
           <h1>Completed</h1>
-          <div ref={drop} className="boxes-h">
+          <div ref={drop1} className="boxes-h">
           {
             ctask.map(task => <CompTask task={task} key={task.id} setTaskData={setTaskData} setTaskid={setTaskid} />)
           }
@@ -102,7 +137,7 @@ const Home = () => {
         {/* div for todo task */}
         <div className="boxes">
           <h1>Todo</h1>
-          <div className="boxes-h">
+          <div ref={drop2} className="boxes-h">
           {
             todotask.map(task => <TodoTask task={task} key={task.id} setTaskData={setTaskData} setTaskid={setTaskid} />)
           }
@@ -112,7 +147,7 @@ const Home = () => {
         {/* div for progress task */}
         <div className="boxes">
           <h1>Progress</h1>
-          <div className="boxes-h">
+          <div ref={drop3} className="boxes-h">
           {
             ptask.map(task => <ProgressTask task={task} key={task.id} setTaskData={setTaskData} setTaskid={setTaskid}/>)
           }

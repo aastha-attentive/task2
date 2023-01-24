@@ -1,6 +1,7 @@
 import { removeTask } from '../../service/localStorage';
 import { getListTask } from '../../service/localStorage';
 import swal from 'sweetalert';
+import { useDrag } from 'react-dnd';
 
 const CompTask = ({task,setTaskData,setTaskid}) => {
 
@@ -16,12 +17,19 @@ const CompTask = ({task,setTaskData,setTaskid}) => {
         setTaskData(getListTask());
         window.location.reload(true);
       }
-    });
-    
+    });    
   }
+
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: 'CARD',
+    item: {task},
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging()
+    })
+  }))
   
   return (
-            <div className="task">
+            <div ref={drag} className="task">
                     <p className="todo-h">{task.taskname}</p>
                     <div className="todo-btn">
                         <i className="fa fa-edit add-btn" title="Edit Item" onClick={()=> setTaskid(task.id)}></i>
