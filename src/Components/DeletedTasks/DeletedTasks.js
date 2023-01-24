@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-import { getDeletedTasks } from "../service/localStorage"
+import { getDeletedTasks } from "../../service/localStorage";
 import DeletedTask from "./DeletedTask";
 
 const DeletedTasks = () => {
   const [deletedTask, setDeletedTask]=useState(getDeletedTasks);
-
+  console.log(deletedTask);
   useEffect(() =>{
     setDeletedTask(getDeletedTasks());
     console.log(deletedTask);

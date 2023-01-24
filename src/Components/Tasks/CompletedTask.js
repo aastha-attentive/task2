@@ -1,5 +1,5 @@
-import { removeTask } from '../service/localStorage';
-import { getListTask } from '../service/localStorage';
+import { removeTask } from '../../service/localStorage';
+import { getListTask } from '../../service/localStorage';
 import swal from 'sweetalert';
 
 const CompTask = ({task,setTaskData,setTaskid}) => {
@@ -14,8 +14,10 @@ const CompTask = ({task,setTaskData,setTaskid}) => {
       if (willDelete) {
         removeTask(id);
         setTaskData(getListTask());
+        window.location.reload(true);
       }
     });
+    
   }
   
   return (

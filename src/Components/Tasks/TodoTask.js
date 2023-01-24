@@ -1,6 +1,6 @@
 import React from 'react'
-import { removeTask } from '../service/localStorage';
-import { getListTask } from '../service/localStorage';
+import { removeTask } from '../../service/localStorage';
+import { getListTask } from '../../service/localStorage';
 import swal from 'sweetalert';
 
 const TodoTask = ({task,setTaskData,setTaskid}) => {
@@ -15,6 +15,7 @@ const TodoTask = ({task,setTaskData,setTaskid}) => {
       if (willDelete) {
         removeTask(id);
         setTaskData(getListTask());
+        window.location.reload(true);
       }
     });
   }

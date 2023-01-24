@@ -6,10 +6,10 @@ const DeletedTask = ({deletedtask}) => {
     <div className='deletedtask'>
         
         <p>{deletedtask.taskname}</p>
-        <p>qqq</p>
+        <p>{deletedtask.assignee}</p>
         <p>{deletedtask.statuss}</p>
-        <p>pa</p>
-        <p>wwww</p>
+        <p>{deletedtask.priority}</p>
+        <p>{deletedtask.storypoints}</p>
     </div>
   )
 }

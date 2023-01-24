@@ -1,10 +1,14 @@
-import { useState,useEffect } from "react";
+import { useState,useEffect,createContext } from "react";
 import { getListTask } from "../service/localStorage";
-import CompTask from "./CompTask";
+import CompTask from "./Tasks/CompletedTask";
 import CreateTask from "./CreateTask";
-import ProgressTask from "./ProgressTask";
-import TodoTask from "./TodoTask";
+import ProgressTask from "./Tasks/ProgressTask";
+import TodoTask from "./Tasks/TodoTask";
+import { useDrop } from "react-dnd";
 
+// export const CardContext = createContext({
+//   markAsDone: (id) => {},
+// });
 
 
 const Home = () => {
@@ -54,11 +58,27 @@ const Home = () => {
     setTaskData(getListTask());
     setUpdatedData(taskData);
   }, []);
+
+
+  //   //changing status of task after droping task
+  // const markAsDone = (status) => {
+  //   console.log(status);
+  // }
     
+  //Adding Drag functionality 
+  const [{isOver}, drop] = useDrop(() => ({
+    accept: 'CARD',
+    drop:(item,monitor) => console.log(item),
+    collect:(monitor) => ({
+      isOver: !!monitor.isOver(),
+    })
+  }));
   
 
-  return (
+
+  return ( 
     <>
+    
       <div className='createb1' onClick={toggleClass}>
           <button >Create Task</button>
       </div>
@@ -69,29 +89,38 @@ const Home = () => {
       </div>
       <div className={(isActive || taskid!=null)? 'blur-container':'container'}>
         
+        {/* div for completed task */}
         <div className="boxes">
           <h1>Completed</h1>
-          <div className="boxes-h">
+          <div ref={drop} className="boxes-h">
           {
             ctask.map(task => <CompTask task={task} key={task.id} setTaskData={setTaskData} setTaskid={setTaskid} />)
           }
           </div>
         </div>
+
+        {/* div for todo task */}
         <div className="boxes">
-          <div className="boxes-h"><h1>Todo</h1>
+          <h1>Todo</h1>
+          <div className="boxes-h">
           {
             todotask.map(task => <TodoTask task={task} key={task.id} setTaskData={setTaskData} setTaskid={setTaskid} />)
           }
           </div>
         </div>
+
+        {/* div for progress task */}
         <div className="boxes">
-          <div className="boxes-h"><h1>Progress</h1>
+          <h1>Progress</h1>
+          <div className="boxes-h">
           {
             ptask.map(task => <ProgressTask task={task} key={task.id} setTaskData={setTaskData} setTaskid={setTaskid}/>)
           }
           </div>
         </div>
       </div>
+
+      {/* form to fill the task */}
       
       { (taskid==null) ? (<div className={isActive ? 'form-container': 'hide-form'}>
             <CreateTask taskid={taskid} toggleClass={toggleClass}/>
