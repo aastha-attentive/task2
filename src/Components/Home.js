@@ -1,19 +1,15 @@
-import { useState,useEffect,createContext } from "react";
-import { editTask, getListTask } from "../service/localStorage";
+import { useState,useEffect } from "react";
 import CompTask from "./Tasks/CompletedTask";
 import CreateTask from "./CreateTask";
 import ProgressTask from "./Tasks/ProgressTask";
 import TodoTask from "./Tasks/TodoTask";
 import { useDrop } from "react-dnd";
-
-// export const CardContext = createContext({
-//    markAsDone: (id) => {},
-// });
-
+import axios from "../service/axios";
+import { getListTask,editTask } from "../service/localStorage";
 
 const Home = () => {
   
-  const [taskData, setTaskData] = useState(getListTask());
+  const [taskData, setTaskData] = useState([]);
   
   const [updatedData,setUpdatedData]=useState(taskData);
   
@@ -49,14 +45,30 @@ const Home = () => {
 
   const toggleClass = () => {
     setActive(!isActive);
-    console.log(isActive);
+    //console.log(isActive);
     
   };
 
+  const getApiData = async() =>{
+    try{
+      const res=await axios.get("/tasks");
+      setTaskData(res.data);
+      setUpdatedData(res.data);
+    }
+    catch (error){
+      console.log(error);
+    }
+  }
+
   
   useEffect(() => {
-    setTaskData(getListTask());
-    setUpdatedData(taskData);
+
+    //fetching data from api
+    getApiData();
+
+    //when data is stored local storage
+    // setTaskData(getListTask());
+    // setUpdatedData(taskData);
   }, []);
 
 
@@ -113,7 +125,7 @@ const Home = () => {
 
   return ( 
     <>
-    
+      
       <div className='createb1' onClick={toggleClass}>
           <button >Create Task</button>
       </div>

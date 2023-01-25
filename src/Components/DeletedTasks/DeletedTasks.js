@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react"
-import { getDeletedTasks } from "../../service/localStorage";
 import DeletedTask from "./DeletedTask";
+import axios from "../../service/axios";
 
 const DeletedTasks = () => {
-  const [deletedTask, setDeletedTask]=useState(getDeletedTasks);
-  console.log(deletedTask);
+  const [deletedTask, setDeletedTask]=useState([])
+
+  const getDeletedTasks = async() =>{
+    try{
+      const res=await axios.get(`/deletedtasks`);
+      setDeletedTask(res.data);
+    }catch(error){
+        console.log(error);
+    }
+  }
   useEffect(() =>{
-    setDeletedTask(getDeletedTasks());
-    console.log(deletedTask);
+    getDeletedTasks();
   },[])
 
   return (

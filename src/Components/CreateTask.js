@@ -1,20 +1,21 @@
-import { addTask, getTaskById } from '../service/localStorage';
+
 import { useForm } from '../hooks/useForm';
 import uuid from 'react-uuid';
 import {  useEffect } from 'react';
-import { editTask } from '../service/localStorage';
+//import { editTask } from '../service/localStorage';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from '../service/axios';
 
 
 const CreateTask = ({taskid,toggleClass}) => {
-  const notify = () => toast("Wow so easy!",{
+  const notify = () => toast("Task Added successfully!",{
     position: "bottom-left",
     autoClose: 5000,
     theme: "dark",
   });
-  //console.log(taskid);
-  const { inputValues, handleInputChange, resetForm, setForm } = useForm({
+
+  const {inputValues, handleInputChange, resetForm, setForm } = useForm({
       taskname: '',
       assignee: '',
       priority:'',
@@ -22,6 +23,30 @@ const CreateTask = ({taskid,toggleClass}) => {
       statuss: ''
   });
 
+  const addTask = async(task) => {
+    try {
+      const res= await axios.post('/tasks',task);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+    // axios.post('/tasks', task)
+    //   .then(function (response) {
+    //     console.log(response);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+  };
+
+  const editTask = async(id,newtask) =>{
+    try {
+      const res= await axios.put(`/tasks/${id}`,newtask);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const handleSubmit = (e) => {
       e.preventDefault();
@@ -33,12 +58,20 @@ const CreateTask = ({taskid,toggleClass}) => {
     }, 1000);
   };
   
+  const getTaskById=async(id) =>{
+    try {
+      const res= await axios.get(`/tasks?id=${id}`);
+      console.log((res.data)[0]);
+      setForm((res.data)[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
 
   useEffect(() => {
     if (taskid!=null) {
-        const task = getTaskById(taskid);
-        setForm(task);
+        getTaskById(taskid);
     }
 }, [taskid]);
 

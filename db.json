@@ -1,36 +1,39 @@
 {
   "tasks": [
     {
-      "id":1,
-      "taskname":"create todo app",
-      "priority":"P1",
-      "assignee":"Me",
-      "storypoints":"6days",
-      "status":"completed"
-  },
-  {
-      "id":2,
-      "taskname":"ecomm-website",
-      "priority":"P1",
-      "assignee":"Me",
-      "storypoints":"6days",
-      "status":"progress"
-  },
-  {
-      "id":3,
-      "taskname":"dragtask",
-      "priority":"P1",
-      "assignee":"Mentor",
-      "storypoints":"6days",
-      "status":"assigned"
-  },
-  {
-      "id":4,
-      "taskname":"task2",
-      "priority":"P1",
-      "assignee":"Mentor",
-      "storypoints":"6days",
-      "status":"completed"
-  }
+      "id": 4,
+      "taskname": "task10",
+      "priority": "P1",
+      "assignee": "Mentor",
+      "storypoints": "6days",
+      "statuss": "completed"
+    },
+    {
+      "id": "47908d87-175a-0614-3376-61fc6e018793",
+      "taskname": "todo8",
+      "assignee": "sapna",
+      "priority": "P3",
+      "storypoints": "2days",
+      "statuss": "completed"
+    },
+    {
+      "id": "682c5d1b-2bf7-f8e1-27f6-e7367cae316a",
+      "taskname": "todo4",
+      "assignee": "",
+      "priority": "",
+      "storypoints": "",
+      "statuss": "progress"
+    }
+  ],
+  "deletedtasks": [
+    {
+      "id": 1,
+      "taskname": "create todo app",
+      "priority": "P1",
+      "assignee": "Me",
+      "storypoints": "6days",
+      "statuss": "completed"
+    }
+
   ]
 }
