@@ -5,7 +5,7 @@ import ProgressTask from "./Tasks/ProgressTask";
 import TodoTask from "./Tasks/TodoTask";
 import { useDrop } from "react-dnd";
 import axios from "../service/axios";
-import { getListTask,editTask } from "../service/localStorage";
+import { editTask } from "../service/api";
 
 const Home = () => {
   
@@ -18,11 +18,13 @@ const Home = () => {
   
   const handleSearch1=({target})=>{
       
-      setUpdatedData(taskData.filter((item) => item.taskname.toLowerCase().includes(target.value)));
+      setUpdatedData(taskData.filter((item) => 
+        item.taskname.toLowerCase().includes(target.value)));
   }
 
   const handleSearch2=({target})=>{
-    setUpdatedData(taskData.filter((item) => item.assignee.toLowerCase().includes(target.value)));
+    setUpdatedData(taskData.filter((item) => 
+      item.assignee.toLowerCase().includes(target.value)));
   }
 
   const ClearFilter = ()=>{
@@ -58,18 +60,7 @@ const Home = () => {
     catch (error){
       console.log(error);
     }
-  }
-
-  
-  useEffect(() => {
-
-    //fetching data from api
-    getApiData();
-
-    //when data is stored local storage
-    // setTaskData(getListTask());
-    // setUpdatedData(taskData);
-  }, []);
+  };
 
 
   //changing status of task after droping task
@@ -78,22 +69,23 @@ const Home = () => {
       draggedTask.statuss="completed";
       console.log(draggedTask);
       editTask(task.id,draggedTask);
-      setTaskData(getListTask);
-  }
+      getApiData();
+  };
   const DragtoTodo = ({task}) => {
     const draggedTask= taskData.filter((ele)=> ele.id===task.id)[0];
     draggedTask.statuss="assigned";
     console.log(draggedTask);
     editTask(task.id,draggedTask);
-    setTaskData(getListTask);
-  }
+    getApiData();
+  };
+
   const DragtoProgress = ({task}) => {
     const draggedTask= taskData.filter((ele)=> ele.id===task.id)[0];
     draggedTask.statuss="progress";
     console.log(draggedTask);
     editTask(task.id,draggedTask);
-    setTaskData(getListTask);
-  }
+    getApiData();
+  };
     
   //Adding Drag functionality 
   const [{isOver1}, drop1] = useDrop(() => ({
@@ -120,7 +112,11 @@ const Home = () => {
     })
   }));
   
-  
+  useEffect(() => {
+
+    //fetching data from api
+    getApiData();
+  }, []);
 
 
   return ( 

@@ -2,7 +2,7 @@
 import { useForm } from '../hooks/useForm';
 import uuid from 'react-uuid';
 import {  useEffect } from 'react';
-//import { editTask } from '../service/localStorage';
+import { editTask,addTask } from '../service/api';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from '../service/axios';
@@ -23,30 +23,6 @@ const CreateTask = ({taskid,toggleClass}) => {
       statuss: ''
   });
 
-  const addTask = async(task) => {
-    try {
-      const res= await axios.post('/tasks',task);
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-    // axios.post('/tasks', task)
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-  };
-
-  const editTask = async(id,newtask) =>{
-    try {
-      const res= await axios.put(`/tasks/${id}`,newtask);
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   const handleSubmit = (e) => {
       e.preventDefault();

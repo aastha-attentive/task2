@@ -34,3 +34,21 @@ export const deleteTask=(task)=>{
       }
     });
   } 
+
+export const editTask = async(id,newtask) =>{
+    try {
+      const res= await axios.put(`/tasks/${id}`,newtask);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+export const addTask = async(task) => {
+    try {
+      const res= await axios.post('/tasks',task);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  }

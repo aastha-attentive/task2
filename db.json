@@ -2,11 +2,11 @@
   "tasks": [
     {
       "id": 4,
-      "taskname": "task10",
+      "taskname": "task11",
       "priority": "P1",
       "assignee": "Mentor",
       "storypoints": "6days",
-      "statuss": "completed"
+      "statuss": "assigned"
     },
     {
       "id": "47908d87-175a-0614-3376-61fc6e018793",
@@ -14,7 +14,7 @@
       "assignee": "sapna",
       "priority": "P3",
       "storypoints": "2days",
-      "statuss": "completed"
+      "statuss": "progress"
     },
     {
       "id": "682c5d1b-2bf7-f8e1-27f6-e7367cae316a",
@@ -34,6 +34,5 @@
       "storypoints": "6days",
       "statuss": "completed"
     }
-
   ]
 }
