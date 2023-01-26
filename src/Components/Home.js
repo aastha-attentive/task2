@@ -65,25 +65,29 @@ const Home = () => {
 
   //changing status of task after droping task
   const DragtoCompleted = ({task}) => {
-      const draggedTask= taskData.filter((ele)=> ele.id===task.id)[0];
-      draggedTask.statuss="completed";
-      console.log(draggedTask);
-      editTask(task.id,draggedTask);
-      getApiData();
+    console.log(task.statuss);
+    task.statuss="completed";
+    console.log(task.statuss);
+    console.log(task);
+    editTask(task.id,task);
+    getApiData();
   };
   const DragtoTodo = ({task}) => {
-    const draggedTask= taskData.filter((ele)=> ele.id===task.id)[0];
-    draggedTask.statuss="assigned";
-    console.log(draggedTask);
-    editTask(task.id,draggedTask);
+    console.log(task.statuss);
+    task.statuss="assigned";
+    console.log(task.statuss);
+    console.log(task);
+    editTask(task.id,task);
     getApiData();
   };
 
   const DragtoProgress = ({task}) => {
-    const draggedTask= taskData.filter((ele)=> ele.id===task.id)[0];
-    draggedTask.statuss="progress";
-    console.log(draggedTask);
-    editTask(task.id,draggedTask);
+    //const draggedTask= taskData.filter((ele)=> ele.id===task.id)[0];
+    console.log(task.statuss);
+    task.statuss="progress";
+    console.log(task.statuss);
+    console.log(task);
+    editTask(task.id,task);
     getApiData();
   };
     
@@ -116,7 +120,7 @@ const Home = () => {
 
     //fetching data from api
     getApiData();
-  }, []);
+  }, [editTask]);
 
 
   return ( 

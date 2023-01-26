@@ -9,7 +9,8 @@ const DeletedTask = ({deletedtask}) => {
         <p>{deletedtask.assignee}</p>
         <p>{deletedtask.statuss}</p>
         <p>{deletedtask.priority}</p>
-        <p>{deletedtask.storypoints}</p>
+        <p>{deletedtask.days}</p>
+        <p>{deletedtask.hours}</p>
     </div>
   )
 }

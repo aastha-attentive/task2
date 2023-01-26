@@ -19,14 +19,16 @@ const CreateTask = ({taskid,toggleClass}) => {
       taskname: '',
       assignee: '',
       priority:'',
-      storypoints: '',
-      statuss: ''
+      days: 0,
+      hours:0,
+      statuss: '',
+      storypoints: new Date(),
   });
 
 
   const handleSubmit = (e) => {
       e.preventDefault();
-      (taskid!=null) ? editTask(taskid, inputValues) : addTask({ id: uuid(), ...inputValues });
+      (taskid!=null) ? editTask(taskid, inputValues) : addTask({ id: uuid(),...inputValues });
       resetForm();
       notify();
       setTimeout(function () {
@@ -63,7 +65,7 @@ const CreateTask = ({taskid,toggleClass}) => {
               </div>
               <div  className="child-form">
                   <label htmlFor="priority" >priority</label>
-                  <select name="priority" value={inputValues.priority}onChange={handleInputChange}>
+                  <select name="priority" value={inputValues.priority} onChange={handleInputChange}>
                       <option value="P0">P0</option>
                       <option value="P1">P1</option>
                       <option value="P2">P2</option>
@@ -75,8 +77,9 @@ const CreateTask = ({taskid,toggleClass}) => {
                   <input name="assignee" value={inputValues.assignee} onChange={handleInputChange}/>
               </div>
               <div  className="child-form">
-                  <label htmlFor="storypoints" >storypoints</label>
-                  <input name="storypoints" value={inputValues.storypoints} onChange={handleInputChange}/>
+                  <label htmlFor="time" >deadline</label>
+                  <input name="days" value={inputValues.days} onChange={handleInputChange}/>
+                  <input name="hours" value={inputValues.hours} onChange={handleInputChange}/>
               </div>
               <div  className="child-form">
                   <label htmlFor="status">status</label>

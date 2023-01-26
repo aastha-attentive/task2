@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { isOverdue } from '../../service/overduetask';
 import {useDrag} from "react-dnd";
 import { deleteTask } from '../../service/api';
 
@@ -17,7 +17,7 @@ const ProgressTask = ({task,setTaskData,setTaskid}) => {
   
   return (
     
-      <div ref={drag} style={{ opacity: isDragging ? 0.5 : 1}} className="task">
+      <div ref={drag} style={{ opacity: isDragging ? 0.5 : 1}}  className={isOverdue(task) ? "task overduetask" : "task"}>
           <p className="todo-h">{task.taskname}</p>
          <div className="todo-btn">
             <i className="fa fa-edit add-btn" title="Edit Item" onClick={()=> setTaskid(task.id)}></i>
