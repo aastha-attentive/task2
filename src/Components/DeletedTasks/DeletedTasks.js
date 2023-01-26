@@ -18,13 +18,21 @@ const DeletedTasks = () => {
   },[])
 
   return (
-    <div className="deleteContainer">
-      <div><h1>Deleted Task</h1></div>
-      <div className="dtasks">
-      {
+    <div>
+      <div className="deletedtask"><h1>Deleted Task</h1></div>
+      <table>
+      <tr>
+        <th>Company</th>
+        <th>Contact</th>
+        <th>Country</th>
+        <th>Contact</th>
+        <th>Country</th>
+      </tr>
+        {
         deletedTask.map(deletedtask => <DeletedTask  key={deletedtask.id} deletedtask={deletedtask}/>)
-      }
-      </div>
+        }
+      </table>
+    
       
     </div>
   )

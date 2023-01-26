@@ -1,17 +1,18 @@
 import React from 'react'
 
+
 const DeletedTask = ({deletedtask}) => {
 
   return (
-    <div className='deletedtask'>
-        
-        <p>{deletedtask.taskname}</p>
-        <p>{deletedtask.assignee}</p>
-        <p>{deletedtask.statuss}</p>
-        <p>{deletedtask.priority}</p>
-        <p>{deletedtask.days}</p>
-        <p>{deletedtask.hours}</p>
-    </div>
+    
+      <tr>
+        <td>{deletedtask.taskname}</td>
+        <td>{deletedtask.assignee}</td>
+        <td>{deletedtask.statuss}</td>
+        <td>{deletedtask.tdriority}</td>
+        <td>{deletedtask.days}</td>
+        <td>{deletedtask.hours}</td>
+      </tr>
   )
 }
 

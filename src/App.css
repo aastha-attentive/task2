@@ -2,15 +2,16 @@
     margin: 0px;
     padding: 0px;
   }
+ 
   html {
     font-size: 62.5%;
   }
   ul{
     width: 100vw;
     height: 5rem;
+    font-family: cursive;
     list-style-type: none;
-   
-    background-color: rgb(27, 30, 119);
+    background-color: rgb(11 12 45);
   }
   li{
     text-align: center;
@@ -20,6 +21,7 @@
     text-align: center;
     padding: 1rem;
     text-decoration: none;
+    cursor: pointer;
   }
   .delete{
     float:right;
@@ -29,24 +31,36 @@
     justify-content: center;
     align-items: center;
     height: 3rem;
-    margin: 1.5rem;
+    margin: 30px;
   }
-  .createb1 button{
-    font-size: 1.6rem;
-    padding: .3rem;
-    background-color: rgb(157, 192, 232);
-    
+  .fill {
+    font-size: 20px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 12px 34px 12px;
+    outline: 0;
+    border: 1px solid black;
+    cursor: pointer;
+    color: white;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
   }
   
-  /* home */
+  .fill::after {
+    content: "";
+    background-color: #323035;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 7px;
+    left: 7px;
+    transition: 0.2s;
+  }
   
-  .blur-container{
-    display: flex;
-    flex-wrap: wrap;
-    margin: 2rem 4rem 2rem 4rem;
-    justify-content: space-around;
-    filter: blur(0.3rem);
-  
+  .fill:hover::after {
+    top: 0px;
+    left: 0px;
   }
   .container{
     display: flex;
@@ -56,34 +70,39 @@
   
   }
   .boxes{
+    background-color: #897986;
     text-align: center;
     height: auto;
     width: 42rem;
+    border: 1px solid;
+    border-radius: 8px;
     
   }
   .task{
-    
+    background-color: #ccb9c8;
     text-align: center;
     display: flex;
     justify-content: space-around;
     padding: 0.6rem;
     border-radius: 0.5rem;
-    margin-top: 0.6rem;
+    margin-top: 0.5rem;
     margin-bottom: 0.7rem;
     margin-left: 1rem;
     margin-right: 1rem;
-    min-width: 40rem;
+    min-width: 39rem;
     word-break: break-word;
     align-items: center;
+    font-family: ui-monospace;
   }
   .overduetask {
-    background-color: rgb(225, 83, 83);
+    background-color: rgb(228 159 159);
   }
   .boxes h1{
     margin: 1rem;
     padding: 1rem;
-    background-color: rgb(114, 221, 114);
+    color: white;
     border-radius: 5px;
+    font-family: "Lucida Console", "Courier New", monospace;
   }
   .boxes-h{
     min-height: 10rem;
@@ -132,6 +151,10 @@
     padding: 2rem;
     gap: 2rem;
     font-size: 1.8rem;
+    font-size: 1.8rem;
+    position: absolute;
+    top: 30%;
+    left: 35%;
    
   }
   .child-form{
@@ -190,9 +213,62 @@
     gap: 1rem;
   }
   .deletedtask{
+    margin-top: 20px ;
     display: flex;
     flex-direction: row;
-    font-size: 2rem;
+    font-size: 1.2rem;
     justify-content: space-around;
+    font-family: "Lucida Console", "Courier New", monospace;
   }
 
+  table {
+    margin-top: 20px;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    
+  }
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    font-size: 1.8rem;
+  }
+  td{
+    font-size: 1.6rem;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+
+  /* form overlay */
+  .modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49,49,49,0.8);
+}
+.modal-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f1f1f1;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+}

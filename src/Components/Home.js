@@ -127,14 +127,14 @@ const Home = () => {
     <>
       
       <div className='createb1' onClick={toggleClass}>
-          <button >Create Task</button>
+          <button className="fill">Create Task</button>
       </div>
       <div className="filterbox">
         <input type="text" name="taskname" id="myinput1" placeholder="Search for a task.." onChange={handleSearch1}/>
         <input type="text" name="assignee" id="myinput2" placeholder="Filter by Assignee.." onChange={handleSearch2}/>
         <button onClick={ClearFilter}>clear Filter</button>
       </div>
-      <div className={(isActive || taskid!=null)? 'blur-container':'container'}>
+      <div className='container'>
         
         {/* div for completed task */}
         <div className="boxes">
@@ -168,15 +168,25 @@ const Home = () => {
       </div>
 
       {/* form to fill the task */}
+      {(isActive || taskid!==null) && (
+        <div className= 'modal overlay'>
+          <div className=".modal-content">
+           <CreateTask taskid={taskid} toggleClass={toggleClass}/>
+          </div>
+          
+        </div>
+      )
+
+      }
       
-      { (taskid==null) ? (<div className={isActive ? 'form-container': 'hide-form'}>
+      {/* { (taskid==null) ? (<div className={isActive ? 'form-container': 'hide-form'}>
             <CreateTask taskid={taskid} toggleClass={toggleClass}/>
        </div> ):
        (<div className={'form-container'}>
             <CreateTask taskid={taskid}  toggleClass={toggleClass}/>
        </div> )
       } 
-      
+       */}
     </>
 
   )
