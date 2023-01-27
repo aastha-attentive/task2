@@ -20,9 +20,7 @@ const Home = () => {
   };
 
   const handleSearch2 = (target) => {
-    setUpdatedData(
-      taskData.filter((item) => item.assignee.toLowerCase().includes(target))
-    );
+    setUpdatedData(taskData.filter((item) => item.assignee.includes(target)));
   };
 
   const ClearFilter = () => {
@@ -136,9 +134,9 @@ const Home = () => {
           onChange={(e) => handleSearch2(e.target.value)}
         >
           <option value="">Filter by Assignee</option>
-          <option value="me">me</option>
-          <option value="team Lead">Team Lead</option>
-          <option value="mentor">Mentor</option>
+          <option value="Me">me</option>
+          <option value="Team Leader">Team Leader</option>
+          <option value="Mentor">Mentor</option>
         </select>
         <button onClick={ClearFilter}>clear Filter</button>
       </div>

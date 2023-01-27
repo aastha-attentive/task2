@@ -70,13 +70,18 @@ const CreateTask = ({ taskid, toggleClass }) => {
           </div>
           <div className="inputfield">
             <label>Assignee</label>
-            <input
-              type="text"
-              className="input"
-              name="assignee"
-              value={inputValues.assignee}
-              onChange={handleInputChange}
-            />
+            <div className="custom_select">
+              <select
+                name="assignee"
+                value={inputValues.assignee}
+                onChange={handleInputChange}
+              >
+                <option value="">Select</option>
+                <option value="Me">Me</option>
+                <option value="Team Leader">Team Leader</option>
+                <option value="Mentor">Mentor</option>
+              </select>
+            </div>
           </div>
           <div className="inputfield">
             <label>Priority</label>
@@ -87,9 +92,9 @@ const CreateTask = ({ taskid, toggleClass }) => {
                 onChange={handleInputChange}
               >
                 <option value="">Select</option>
-                <option value="male">P1</option>
-                <option value="male">P2</option>
-                <option value="male">P3</option>
+                <option value="P1">P1</option>
+                <option value="P2">P2</option>
+                <option value="P3">P3</option>
               </select>
             </div>
           </div>

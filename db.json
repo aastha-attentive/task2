@@ -1,96 +1,66 @@
 {
   "tasks": [
     {
-      "id": "beb4ae91-b5af-4116-72d6-3d732c0e56c8",
-      "taskname": "todo2",
-      "assignee": "me",
-      "priority": "",
+      "id": "e07ec7bc-7164-f53a-0bc8-81f7b3e26ba8",
+      "taskname": "task4",
+      "assignee": "Me",
+      "priority": "P1",
       "days": "0",
       "hours": "1",
-      "statuss": "assigned",
-      "storypoints": "2023-01-26T10:12:20.726Z"
-    },
-    {
-      "id": "3ae12a50-dc4e-775f-e6fc-a05a4ef0d5eb",
-      "taskname": "todo8",
-      "assignee": "",
-      "priority": "",
-      "days": "1",
-      "hours": "2",
-      "statuss": "progress",
-      "storypoints": "2023-01-26T12:30:18.439Z"
-    },
-    {
-      "id": "50ab960c-8d5b-5c16-3d18-7f854d52e7cd",
-      "taskname": "to",
-      "assignee": "sapna",
-      "priority": "male",
-      "days": "1",
-      "hours": "2",
-      "statuss": "progress",
-      "storypoints": "2023-01-26T17:53:32.872Z"
-    },
-    {
-      "id": "a7c806ea-2cf5-6ce1-16a2-2d8f9d3e4f9e",
-      "taskname": "todo1",
-      "assignee": "",
-      "priority": "",
-      "days": 0,
-      "hours": 0,
-      "statuss": "progress",
-      "storypoints": "2023-01-26T18:28:35.073Z"
-    },
-    {
-      "id": "6cd30866-72c3-ec09-8a7e-b06d4ee6f5c0",
-      "taskname": "task4",
-      "assignee": "sapna",
-      "priority": "male",
-      "days": "1",
-      "hours": "2",
       "statuss": "completed",
-      "storypoints": "2023-01-27T06:42:30.183Z"
+      "storypoints": "2023-01-27T08:56:59.800Z"
     },
     {
-      "id": "9fcf9302-9d86-1f36-aca0-3d0c229aeabe",
-      "taskname": "todo2",
-      "assignee": "me",
-      "priority": "male",
-      "days": "7",
-      "hours": "9",
+      "id": "e07ec7bc-7164-f53a-81f7b3e26ba8",
+      "taskname": "task2",
+      "assignee": "Mentor",
+      "priority": "P1",
+      "days": "1",
+      "hours": "1",
+      "statuss": "assigned",
+      "storypoints": "2023-01-27T08:56:59.800Z"
+    },
+    {
+      "id": "bc-7164-f53a-0bc8-81f7b3e26ba8",
+      "taskname": "task3",
+      "assignee": "Team Leader",
+      "priority": "P1",
+      "days": "0",
+      "hours": "1",
       "statuss": "progress",
-      "storypoints": "2023-01-27T06:48:48.781Z"
+      "storypoints": "2023-01-26T08:56:59.800Z"
+    },
+    {
+      "id": "e07ec7bc-81f7b3e26ba8",
+      "taskname": "task4",
+      "assignee": "Me",
+      "priority": "P1",
+      "days": "0",
+      "hours": "1",
+      "statuss": "completed",
+      "storypoints": "2023-01-27T08:56:59.800Z"
     }
   ],
   "deletedtasks": [
     {
-      "id": "f00db3f5-0362-264c-3a2a-7aa0e83bdb47",
-      "taskname": "todo1",
-      "assignee": "me",
-      "priority": "P1",
-      "days": "0",
-      "hours": "2",
-      "statuss": "completed",
-      "storypoints": "2023-01-26T09:19:55.264Z"
-    },
-    {
-      "id": "4416ca0b-50dd-f2e1-ca3e-957f47c4237b",
-      "taskname": "todo",
+      "id": "e07ec7bc-7164-bc8-81f7b3e26ba8",
+      "taskname": "task9",
       "assignee": "Me",
-      "priority": "",
-      "days": 0,
-      "hours": 0,
+      "priority": "P1",
+      "days": "1",
+      "hours": "1",
       "statuss": "progress",
-      "storypoints": "2023-01-26T12:55:18.281Z"
+      "storypoints": "2023-01-27T08:56:59.800Z"
     },
     {
-      "id": "e2e18ab9-d288-6494-43c8-d20ed4d59ffe",
-      "taskname": "todo1",
-      "assignee": "",
-      "priority": "",
-      "days": 0,
-      "hours": 0,
-      "statuss": "progress",
-      "storypoints": "2023-01-26T17:55:52.399Z"
+      "id": "e07ec7bc-7164-c8-81f7b3e26ba8",
+      "taskname": "task10",
+      "assignee": "Mentor",
+      "priority": "P1",
+      "days": "2",
+      "hours": "1",
+      "statuss": "completed",
+      "storypoints": "2023-01-27T08:56:59.800Z"
     }
   ]
 }
