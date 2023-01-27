@@ -1,0 +1,32 @@
+.deletedtask{
+    margin-top: 20px ;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.2rem;
+    justify-content: space-around;
+    font-family: "Lucida Console", "Courier New", monospace;
+  }
+
+  table {
+    margin-top: 20px;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    
+  }
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    font-size: 1.8rem;
+  }
+  td{
+    font-size: 1.6rem;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }

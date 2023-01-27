@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import DeletedTask from "./DeletedTask";
 import axios from "../../service/axios";
+import "./style.css";
 
 const DeletedTasks = () => {
   const [deletedTask, setDeletedTask] = useState([]);

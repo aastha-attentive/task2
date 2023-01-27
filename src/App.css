@@ -78,25 +78,7 @@
     border-radius: 8px;
     
   }
-  .task{
-    background-color: #ccb9c8;
-    text-align: center;
-    display: flex;
-    justify-content: space-around;
-    padding: 0.6rem;
-    border-radius: 0.5rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.7rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    min-width: 39rem;
-    word-break: break-word;
-    align-items: center;
-    font-family: ui-monospace;
-  }
-  .overduetask {
-    background-color: rgb(228 159 159);
-  }
+  
   .boxes h1{
     margin: 1rem;
     padding: 1rem;
@@ -105,7 +87,7 @@
     font-family: "Lucida Console", "Courier New", monospace;
   }
   .boxes-h{
-    min-height: 10rem;
+    min-height: 20rem;
     padding: 0.2rem;
     border-radius: 2%;
   }
@@ -118,19 +100,6 @@
     height: 15rem;
     width: 15rem;
     background-color:bisque;
-  }
-  .todo-h{
-    flex: 70%;
-    font-size: 2rem;
-  }
-  
-  .todo-btn {
-    display: flex;
-    gap: 2rem;
-  }
-  .todo-btn i{
-    cursor: pointer;
-    color: rgb(6, 6, 6);
   }
   
   /* createtask */
@@ -226,39 +195,7 @@
     border: 2px;
     gap: 1rem;
   }
-  .deletedtask{
-    margin-top: 20px ;
-    display: flex;
-    flex-direction: row;
-    font-size: 1.2rem;
-    justify-content: space-around;
-    font-family: "Lucida Console", "Courier New", monospace;
-  }
-
-  table {
-    margin-top: 20px;
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    
-  }
-  th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-    font-size: 1.8rem;
-  }
-  td{
-    font-size: 1.6rem;
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
   
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
-
 
   /* form overlay */
   .modal, .overlay {

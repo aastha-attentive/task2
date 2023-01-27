@@ -1,0 +1,33 @@
+.task{
+    background-color: #ccb9c8;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.7rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    min-width: 39rem;
+    word-break: break-word;
+    align-items: center;
+    font-family: ui-monospace;
+  }
+  .overduetask {
+    background-color: rgb(228 159 159);
+  }
+  
+.todo-h{
+    flex: 70%;
+    font-size: 2rem;
+  }
+  
+  .todo-btn {
+    display: flex;
+    gap: 2rem;
+  }
+  .todo-btn i{
+    cursor: pointer;
+    color: rgb(6, 6, 6);
+  }
