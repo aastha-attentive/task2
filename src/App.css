@@ -128,6 +128,10 @@
     display: flex;
     gap: 2rem;
   }
+  .todo-btn i{
+    cursor: pointer;
+    color: rgb(6, 6, 6);
+  }
   
   /* createtask */
   .hide-form {
@@ -151,15 +155,18 @@
     padding: 2rem;
     gap: 2rem;
     font-size: 1.8rem;
-    font-size: 1.8rem;
     position: absolute;
     top: 30%;
     left: 35%;
    
   }
+  .main-form input{
+    width: 15rem;
+  }
   .child-form{
     display: flex;
     flex-wrap: wrap;
+    
     gap: 1rem;
   }
   .child-form label{
@@ -177,25 +184,32 @@
     border-radius: 7px;
   }
   .filterbox{
-    margin-top: 4rem;
+    margin-top: 6rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     margin-left: 2rem;
+    margin-bottom: 3rem;
   }
-  .filterbox input{
-    width: 30rem;
+  .filterbox input,select{
+    width: 20rem;
     font-size: 1.7rem;
     padding: .4rem;
+    font-family: cursive;
   }
   .filterbox button{
     width: 15rem;
     font-size: 1.7rem;
-    padding: .2rem;
+    border-radius: 10px;
+    padding: 0.2rem;
     font-size: 2rem;
-    background-color: rgb(143, 143, 235);
+    background-color: rgb(226 226 226);
+    border: none;
+    cursor: pointer;
   }
-  
+  .filterbox button:hover {
+    background-color: rgb(122, 111, 144);
+  }
   /* DeleteTask */
   .deleteContainer{
     margin-top: 1.5rem;

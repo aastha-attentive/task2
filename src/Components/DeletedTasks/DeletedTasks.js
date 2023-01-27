@@ -1,41 +1,41 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import DeletedTask from "./DeletedTask";
 import axios from "../../service/axios";
 
 const DeletedTasks = () => {
-  const [deletedTask, setDeletedTask]=useState([])
+  const [deletedTask, setDeletedTask] = useState([]);
 
-  const getDeletedTasks = async() =>{
-    try{
-      const res=await axios.get(`/deletedtasks`);
+  const getDeletedTasks = async () => {
+    try {
+      const res = await axios.get(`/deletedtasks`);
       setDeletedTask(res.data);
-    }catch(error){
-        console.log(error);
+    } catch (error) {
+      console.log(error);
     }
-  }
-  useEffect(() =>{
+  };
+  useEffect(() => {
     getDeletedTasks();
-  },[])
+  }, []);
 
   return (
     <div>
-      <div className="deletedtask"><h1>Deleted Task</h1></div>
+      <div className="deletedtask">
+        <h1>Deleted Task</h1>
+      </div>
       <table>
-      <tr>
-        <th>Company</th>
-        <th>Contact</th>
-        <th>Country</th>
-        <th>Contact</th>
-        <th>Country</th>
-      </tr>
-        {
-        deletedTask.map(deletedtask => <DeletedTask  key={deletedtask.id} deletedtask={deletedtask}/>)
-        }
+        <tr>
+          <th>Task Name</th>
+          <th>Assignee</th>
+          <th>Status</th>
+          <th>Priority</th>
+          <th>Deadline</th>
+        </tr>
+        {deletedTask.map((deletedtask) => (
+          <DeletedTask key={deletedtask.id} deletedtask={deletedtask} />
+        ))}
       </table>
-    
-      
     </div>
-  )
-}
+  );
+};
 
-export default DeletedTasks
+export default DeletedTasks;
