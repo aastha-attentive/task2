@@ -2,12 +2,12 @@
   "tasks": [
     {
       "id": "e07ec7bc-7164-f53a-0bc8-81f7b3e26ba8",
-      "taskname": "task6",
+      "taskname": "task7",
       "assignee": "Me",
       "priority": "P1",
       "days": "0",
       "hours": "1",
-      "statuss": "completed",
+      "status": "completed",
       "storypoints": "2023-01-27T08:56:59.800Z"
     },
     {
@@ -17,7 +17,7 @@
       "priority": "P1",
       "days": "1",
       "hours": "1",
-      "statuss": "progress",
+      "status": "progress",
       "storypoints": "2023-01-27T08:56:59.800Z"
     },
     {
@@ -27,7 +27,7 @@
       "priority": "P1",
       "days": "0",
       "hours": "1",
-      "statuss": "assigned",
+      "status": "assigned",
       "storypoints": "2023-01-26T08:56:59.800Z"
     },
     {
@@ -37,7 +37,7 @@
       "priority": "P1",
       "days": "0",
       "hours": "1",
-      "statuss": "progress",
+      "status": "completed",
       "storypoints": "2023-01-27T08:56:59.800Z"
     },
     {
@@ -47,8 +47,38 @@
       "priority": "P3",
       "days": "7",
       "hours": "2",
-      "statuss": "completed",
+      "status": "assigned",
       "storypoints": "2023-01-27T09:33:25.753Z"
+    },
+    {
+      "id": "QFlbtbd",
+      "taskname": "aastha",
+      "assignee": "Team Leader",
+      "priority": "P3",
+      "days": "1",
+      "hours": "4",
+      "status": "progress",
+      "storypoints": "2023-02-02T09:16:32.992Z"
+    },
+    {
+      "id": "WHwvE0F",
+      "taskname": "todo",
+      "assignee": "Team Leader",
+      "priority": "P2",
+      "days": "1",
+      "hours": "0",
+      "status": "assigned",
+      "storypoints": "2023-02-02T09:24:47.813Z"
+    },
+    {
+      "id": "ngBeh3N",
+      "taskname": "ashwani",
+      "assignee": "Team Leader",
+      "priority": "P2",
+      "days": "1",
+      "hours": "0",
+      "status": "completed",
+      "storypoints": "2023-02-02T09:25:25.722Z"
     }
   ],
   "deletedtasks": [
@@ -59,7 +89,7 @@
       "priority": "P1",
       "days": "1",
       "hours": "1",
-      "statuss": "progress",
+      "status": "progress",
       "storypoints": "2023-01-27T08:56:59.800Z"
     },
     {
@@ -69,7 +99,7 @@
       "priority": "P1",
       "days": "2",
       "hours": "1",
-      "statuss": "completed",
+      "status": "completed",
       "storypoints": "2023-01-27T08:56:59.800Z"
     }
   ]

@@ -3,12 +3,17 @@ import { useDrag } from "react-dnd";
 import { deleteTask } from "../../service/api";
 import { isOverdue } from "../../service/overduetask";
 import "./style.css";
+import { TaskDetails } from "../../Models/model";
 
-const CompTask = ({ task, setTaskData, setTaskid }) => {
-  // Adding Drag effect
+interface TodoTaskProps {
+  task:TaskDetails
+  setTaskid:React.Dispatch<React.SetStateAction<string>>
+}
+
+const TodoTask:React.FC<TodoTaskProps> = ({ task,setTaskid }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "CARD",
-    item: { task },
+    item: {task},
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -37,4 +42,4 @@ const CompTask = ({ task, setTaskData, setTaskid }) => {
   );
 };
 
-export default CompTask;
+export default TodoTask;

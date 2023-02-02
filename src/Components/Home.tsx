@@ -6,44 +6,42 @@ import TodoTask from "./Tasks/TodoTask";
 import { useDrop } from "react-dnd";
 import axios from "../service/axios";
 import { editTask } from "../service/api";
+import { TaskDetails } from "../Models/model";
 
 const Home = () => {
   const [taskData, setTaskData] = useState([]);
-
   const [updatedData, setUpdatedData] = useState(taskData);
-
-  const [taskid, setTaskid] = useState(null);
+  const [taskid, setTaskid] = useState("");
   const [isActive, setActive] = useState(false);
+  
 
-  const handleSearch1 = (target) => {
-    setUpdatedData(taskData.filter((item) => item.taskname.includes(target)));
+  const handleSearch1 = (target:string):void => {
+    setUpdatedData(taskData.filter((item:TaskDetails) => item.taskname.includes(target)));
   };
 
-  const handleSearch2 = (target) => {
-    setUpdatedData(taskData.filter((item) => item.assignee.includes(target)));
+  const handleSearch2 = (target:string):void => {
+    setUpdatedData(taskData.filter((item:TaskDetails) => item.assignee.includes(target)));
   };
 
   const ClearFilter = () => {
-    document.getElementById("myinput1").value = "";
-    document.getElementById("myinput2").value = "";
     setUpdatedData(taskData);
   };
 
-  const ctask = updatedData.filter((task) => {
-    return task.statuss === "completed";
+  const ctask = updatedData.filter((task:TaskDetails) => {
+    return task.status === "completed";
   });
 
-  const todotask = updatedData.filter((elem) => {
-    return elem.statuss === "assigned";
+  const todotask = updatedData.filter((elem:TaskDetails) => {
+    return elem.status === "assigned";
   });
 
-  const ptask = updatedData.filter((elem) => {
-    return elem.statuss === "progress";
+  const ptask = updatedData.filter((elem:TaskDetails) => {
+    return elem.status === "progress";
   });
 
   const toggleClass = () => {
     setActive(!isActive);
-    setTaskid(null);
+    setTaskid("");
   };
 
   const getApiData = async () => {
@@ -57,53 +55,44 @@ const Home = () => {
   };
 
   //changing status of task after droping task
-  const DragtoCompleted = ({ task }) => {
-    console.log(task.statuss);
-    task.statuss = "completed";
-    console.log(task.statuss);
-    console.log(task);
+  const DragtoCompleted = ({task}:any) => {
+    task.status = "completed";
     editTask(task.id, task);
     getApiData();
   };
-  const DragtoTodo = ({ task }) => {
-    console.log(task.statuss);
-    task.statuss = "assigned";
-    console.log(task.statuss);
-    console.log(task);
+  
+  const DragtoTodo = ({task}:any) => {
+    task.status = "assigned";
     editTask(task.id, task);
     getApiData();
   };
 
-  const DragtoProgress = ({ task }) => {
-    //const draggedTask= taskData.filter((ele)=> ele.id===task.id)[0];
-    console.log(task.statuss);
-    task.statuss = "progress";
-    console.log(task.statuss);
-    console.log(task);
+  const DragtoProgress = ({task}:any) => {
+    task.status = "progress";
     editTask(task.id, task);
     getApiData();
   };
 
   //Adding Drag functionality
-  const [{ isOver1 }, drop1] = useDrop(() => ({
+  const [{isOver:isOver1},drop1] = useDrop(() => ({
     accept: "CARD",
-    drop: (item, monitor) => DragtoCompleted(item),
+    drop: (item:any, monitor) => DragtoCompleted(item),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
   }));
 
-  const [{ isOver2 }, drop2] = useDrop(() => ({
+  const [{isOver:isOver2},drop2] = useDrop(() => ({
     accept: "CARD",
-    drop: (item, monitor) => DragtoTodo(item),
+    drop: (item:any, monitor) => DragtoTodo(item),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
   }));
 
-  const [{ isOver3 }, drop3] = useDrop(() => ({
+  const [{isOver:isOver3}, drop3] = useDrop(() => ({
     accept: "CARD",
-    drop: (item, monitor) => DragtoProgress(item),
+    drop: (item:any, monitor) => DragtoProgress(item),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
@@ -112,25 +101,27 @@ const Home = () => {
   useEffect(() => {
     //fetching data from api
     getApiData();
-  }, [editTask]);
+  },[]);
 
   return (
     <>
       <div className="createb1" onClick={toggleClass}>
         <button className="fill">Create Task</button>
       </div>
-      <div className="filterbox">
+      <form className="filterbox">
         <input
           type="text"
           name="taskname"
           id="myinput1"
           placeholder="Search for a task.."
+          
           onChange={(e) => handleSearch1(e.target.value)}
         />
         <select
           name="assignee"
           id="myinput2"
           placeholder="Filter by Assignee.."
+         
           onChange={(e) => handleSearch2(e.target.value)}
         >
           <option value="">Filter by Assignee</option>
@@ -138,18 +129,17 @@ const Home = () => {
           <option value="Team Leader">Team Leader</option>
           <option value="Mentor">Mentor</option>
         </select>
-        <button onClick={ClearFilter}>clear Filter</button>
-      </div>
+        <input type="reset" value="clear Filter" onClick={()=>ClearFilter()}/>
+      </form>
       <div className="container">
         {/* div for completed task */}
         <div className="boxes">
           <h1>Completed</h1>
           <div ref={drop1} className="boxes-h">
-            {ctask.map((task) => (
+            {ctask.map((task:TaskDetails) => (
               <CompTask
-                task={task}
                 key={task.id}
-                setTaskData={setTaskData}
+                task={task}
                 setTaskid={setTaskid}
               />
             ))}
@@ -160,11 +150,10 @@ const Home = () => {
         <div className="boxes">
           <h1>Todo</h1>
           <div ref={drop2} className="boxes-h">
-            {todotask.map((task) => (
+            {todotask.map((task:TaskDetails) => (
               <TodoTask
-                task={task}
                 key={task.id}
-                setTaskData={setTaskData}
+                task={task}
                 setTaskid={setTaskid}
               />
             ))}
@@ -175,11 +164,10 @@ const Home = () => {
         <div className="boxes">
           <h1>Progress</h1>
           <div ref={drop3} className="boxes-h">
-            {ptask.map((task) => (
+            {ptask.map((task:TaskDetails) => (
               <ProgressTask
-                task={task}
                 key={task.id}
-                setTaskData={setTaskData}
+                task={task}
                 setTaskid={setTaskid}
               />
             ))}
@@ -188,7 +176,7 @@ const Home = () => {
       </div>
 
       {/* form to fill the task */}
-      {(isActive || taskid !== null) && (
+      {(isActive || taskid !== "") && (
         <div className="modal overlay">
           <div className=".modal-content">
             <CreateTask taskid={taskid} toggleClass={toggleClass} />
@@ -196,14 +184,6 @@ const Home = () => {
         </div>
       )}
 
-      {/* { (taskid==null) ? (<div className={isActive ? 'form-container': 'hide-form'}>
-            <CreateTask taskid={taskid} toggleClass={toggleClass}/>
-       </div> ):
-       (<div className={'form-container'}>
-            <CreateTask taskid={taskid}  toggleClass={toggleClass}/>
-       </div> )
-      } 
-       */}
     </>
   );
 };

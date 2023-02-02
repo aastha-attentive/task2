@@ -1,14 +1,20 @@
 import React from "react";
+import { isOverdue } from "../../service/overduetask";
 import { useDrag } from "react-dnd";
 import { deleteTask } from "../../service/api";
-import { isOverdue } from "../../service/overduetask";
 import "./style.css";
+import { TaskDetails } from "../../Models/model";
 
-const TodoTask = ({ task, setTaskData, setTaskid }) => {
+interface ProgressTaskProps {
+  task:TaskDetails
+  setTaskid:React.Dispatch<React.SetStateAction<string>>
+}
+const ProgressTask:React.FC<ProgressTaskProps> = ({ task ,setTaskid }) => {
+  // Adding Drag effect
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "CARD",
     item: { task },
-    collect: (monitor) => ({
+    collect: (monitor:any) => ({
       isDragging: !!monitor.isDragging(),
     }),
   }));
@@ -36,4 +42,4 @@ const TodoTask = ({ task, setTaskData, setTaskid }) => {
   );
 };
 
-export default TodoTask;
+export default ProgressTask;

@@ -1,13 +1,19 @@
 import { useForm } from "../hooks/useForm";
-import uuid from "react-uuid";
-import { useEffect } from "react";
+import { v4 as uuid } from 'uuid';
+import { useEffect, useState } from "react";
 import { editTask, addTask } from "../service/api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "../service/axios";
 import "./form.css";
+import { task } from "../hooks/useForm";
 
-const CreateTask = ({ taskid, toggleClass }) => {
+interface CreateTaskProps {
+  taskid: String
+  toggleClass: () => void
+}
+
+const CreateTask:React.FC<CreateTaskProps> = ({ taskid, toggleClass }) => {
   const notify = () =>
     toast("Task Added successfully!", {
       position: "bottom-left",
@@ -15,32 +21,25 @@ const CreateTask = ({ taskid, toggleClass }) => {
       theme: "dark",
     });
 
-  const { inputValues, handleInputChange, resetForm, setForm } = useForm({
-    taskname: "",
-    assignee: "",
-    priority: "",
-    days: 0,
-    hours: 0,
-    statuss: "",
-    storypoints: new Date(),
-  });
+  const { inputValues, handleInputChange, resetForm,setForm} = useForm(task);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    taskid != null
+  const handleSubmit = (event:any) => {
+    event.preventDefault();
+    console.log(inputValues);
+    taskid != ""
       ? editTask(taskid, inputValues)
-      : addTask({ id: uuid(), ...inputValues });
+      : addTask(inputValues );
     resetForm();
     notify();
     setTimeout(function () {
-      window.location.reload(true); //MODIFICATION
+      window.location.reload(); 
     }, 1000);
   };
 
-  const getTaskById = async (id) => {
+  const getTaskById = async (newtaskid:String) => {
     try {
-      const res = await axios.get(`/tasks?id=${id}`);
-      console.log(res.data[0]);
+      const res = await axios.get(`/tasks?id=${newtaskid}`);
+      console.log(res);
       setForm(res.data[0]);
     } catch (error) {
       console.log(error);
@@ -48,7 +47,7 @@ const CreateTask = ({ taskid, toggleClass }) => {
   };
 
   useEffect(() => {
-    if (taskid != null) {
+    if (taskid != "") {
       getTaskById(taskid);
     }
   }, [taskid]);
@@ -65,7 +64,7 @@ const CreateTask = ({ taskid, toggleClass }) => {
               className="input"
               name="taskname"
               value={inputValues.taskname}
-              onChange={handleInputChange}
+              onChange={(e)=>handleInputChange(e)}
             />
           </div>
           <div className="inputfield">
@@ -74,7 +73,7 @@ const CreateTask = ({ taskid, toggleClass }) => {
               <select
                 name="assignee"
                 value={inputValues.assignee}
-                onChange={handleInputChange}
+                onChange={(e)=>handleInputChange(e)}
               >
                 <option value="">Select</option>
                 <option value="Me">Me</option>
@@ -89,7 +88,7 @@ const CreateTask = ({ taskid, toggleClass }) => {
               <select
                 name="priority"
                 value={inputValues.priority}
-                onChange={handleInputChange}
+                onChange={(e)=>handleInputChange(e)}
               >
                 <option value="">Select</option>
                 <option value="P1">P1</option>
@@ -103,9 +102,9 @@ const CreateTask = ({ taskid, toggleClass }) => {
             <input
               type="text"
               className="input"
-              name="statuss"
-              value={inputValues.statuss}
-              onChange={handleInputChange}
+              name="status"
+              value={inputValues.status}
+              onChange={(e)=>handleInputChange(e)}
             />
           </div>
 
@@ -115,14 +114,14 @@ const CreateTask = ({ taskid, toggleClass }) => {
               className="input"
               name="days"
               value={inputValues.days}
-              onChange={handleInputChange}
+              onChange={(e)=>handleInputChange(e)}
             />
 
             <input
               className="input"
               name="hours"
               value={inputValues.hours}
-              onChange={handleInputChange}
+              onChange={(e)=>handleInputChange(e)}
             />
           </div>
 
@@ -130,72 +129,12 @@ const CreateTask = ({ taskid, toggleClass }) => {
             <button className="btn" onClick={toggleClass}>
               close
             </button>
-            <button className="btn" onClick={handleSubmit}>
+            <button className="btn" onClick={(event)=>handleSubmit(event)}>
               Add Task
             </button>
           </div>
         </div>
       </div>
-
-      {/* <form className="main-form">
-        <div className="child-form">
-          <label htmlFor="taskname">taskname</label>
-          <input
-            name="taskname"
-            value={inputValues.taskname}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="child-form">
-          <label htmlFor="priority">priority</label>
-          <select
-            name="priority"
-            value={inputValues.priority}
-            onChange={handleInputChange}
-          >
-            <option value="P0">P0</option>
-            <option value="P1">P1</option>
-            <option value="P2">P2</option>
-            <option value="P3">P3</option>
-          </select>
-        </div>
-        <div className="child-form">
-          <label htmlFor="assignee">assignee</label>
-          <input
-            name="assignee"
-            value={inputValues.assignee}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="child-form deadline">
-          <label htmlFor="time">deadline</label>
-          <input
-            className="deadline"
-            name="days"
-            value={inputValues.days}
-            onChange={handleInputChange}
-          />
-          <input
-            className="deadline"
-            name="hours"
-            value={inputValues.hours}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="child-form">
-          <label htmlFor="status">status</label>
-          <input
-            name="statuss"
-            value={inputValues.statuss}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div className="btn">
-          <button onClick={toggleClass}>close</button>
-          <button onClick={handleSubmit}>Add Task</button>
-        </div>
-      </form> */}
       <ToastContainer position="bottom-left" autoClose={1000} theme="dark" />
     </>
   );

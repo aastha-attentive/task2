@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import DeletedTask from "./DeletedTask";
 import axios from "../../service/axios";
 import "./style.css";
+import { TaskDetails } from "../../Models/model";
 
 const DeletedTasks = () => {
-  const [deletedTask, setDeletedTask] = useState([]);
+  const [deletedTask, setDeletedTask] = useState<TaskDetails[]>([])
 
   const getDeletedTasks = async () => {
     try {
@@ -14,6 +15,13 @@ const DeletedTasks = () => {
       console.log(error);
     }
   };
+
+  const renderNotes = ():JSX.Element[] => {
+    return deletedTask.map(deletedtask => {
+      return <DeletedTask key={deletedtask.id} deletedtask={deletedtask} />
+    })
+  }
+
   useEffect(() => {
     getDeletedTasks();
   }, []);
@@ -31,9 +39,7 @@ const DeletedTasks = () => {
           <th>Priority</th>
           <th>Deadline</th>
         </tr>
-        {deletedTask.map((deletedtask) => (
-          <DeletedTask key={deletedtask.id} deletedtask={deletedtask} />
-        ))}
+        {renderNotes()}
       </table>
     </div>
   );
