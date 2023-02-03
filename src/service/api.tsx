@@ -1,6 +1,20 @@
 import axios from "./axios";
 import swal from "sweetalert";
-import { TaskDetails } from "../Models/model";
+import { TaskDetails,Tasks } from "../Models/model";
+
+
+
+
+export const getApiData = async()=> {
+  const response = await axios.get<TaskDetails[]>("/tasks");
+  return response.data;
+};
+
+export const getTaskById = async (newtaskid:any) => {
+    const res = await axios.get<TaskDetails>(`/tasks?id=${newtaskid}`);
+    return res.data;
+};
+
 
 const adddeletetask = async (task:TaskDetails) => {
   try {
@@ -34,19 +48,12 @@ export const deleteTask = (task:TaskDetails) => {
 };
 
 export const editTask = async (id:String, newtask:TaskDetails) => {
-  try {
     const res = await axios.put(`/tasks/${id}`, newtask);
-    console.log(res);
-  } catch (error) {
-    console.log(error);
-  }
+    return res.data;
 };
 
 export const addTask = async (task:TaskDetails) => {
-  try {
     const res = await axios.post("/tasks", task);
-    console.log(res);
-  } catch (error) {
-    console.log(error);
-  }
+    return res.data;
 };
+

@@ -1,12 +1,14 @@
 import { useForm } from "../hooks/useForm";
 import { v4 as uuid } from 'uuid';
 import { useEffect, useState } from "react";
-import { editTask, addTask } from "../service/api";
+import { editTask, addTask , getTaskById} from "../service/api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "../service/axios";
 import "./form.css";
 import { task } from "../hooks/useForm";
+import { useQuery,useMutation } from 'react-query'
+import { TaskDetails } from "../Models/model";
 
 interface CreateTaskProps {
   taskid: String
@@ -23,12 +25,25 @@ const CreateTask:React.FC<CreateTaskProps> = ({ taskid, toggleClass }) => {
 
   const { inputValues, handleInputChange, resetForm,setForm} = useForm(task);
 
-  const handleSubmit = (event:any) => {
-    event.preventDefault();
-    console.log(inputValues);
+  const {mutate:postTask } =
+                 useMutation<any, Error>(
+                  async () => {
+                    return await addTask(inputValues);
+                  },
+                 );
+
+  const {mutate:updateTask } =
+                 useMutation<any, Error>(
+                  async () => {
+                    return await editTask(taskid,inputValues);
+                  },
+                 );
+
+
+  function handleSubmit(){
     taskid != ""
-      ? editTask(taskid, inputValues)
-      : addTask(inputValues );
+      ? updateTask()
+      : postTask();
     resetForm();
     notify();
     setTimeout(function () {
@@ -36,21 +51,18 @@ const CreateTask:React.FC<CreateTaskProps> = ({ taskid, toggleClass }) => {
     }, 1000);
   };
 
-  const getTaskById = async (newtaskid:String) => {
-    try {
-      const res = await axios.get(`/tasks?id=${newtaskid}`);
-      console.log(res);
-      setForm(res.data[0]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const {  refetch:gettaskbyId }=useQuery<TaskDetails, Error>(
+   'iddata', 
+   async () => {
+    return await getTaskById(taskid);  
+  },
+   {
+     onSuccess: (res:any) => {
+      setForm(res[0]);
+       console.log(res[0])
+     },
+   });
 
-  useEffect(() => {
-    if (taskid != "") {
-      getTaskById(taskid);
-    }
-  }, [taskid]);
 
   return (
     <>
@@ -129,7 +141,7 @@ const CreateTask:React.FC<CreateTaskProps> = ({ taskid, toggleClass }) => {
             <button className="btn" onClick={toggleClass}>
               close
             </button>
-            <button className="btn" onClick={(event)=>handleSubmit(event)}>
+            <button className="btn" onClick={handleSubmit}>
               Add Task
             </button>
           </div>

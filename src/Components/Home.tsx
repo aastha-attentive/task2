@@ -5,15 +5,24 @@ import ProgressTask from "./Tasks/ProgressTask";
 import TodoTask from "./Tasks/TodoTask";
 import { useDrop } from "react-dnd";
 import axios from "../service/axios";
-import { editTask } from "../service/api";
-import { TaskDetails } from "../Models/model";
+import { editTask ,getApiData} from "../service/api";
+import { TaskDetails,Tasks } from "../Models/model";
+import { useQuery} from 'react-query';
 
 const Home = () => {
-  const [taskData, setTaskData] = useState([]);
-  const [updatedData, setUpdatedData] = useState(taskData);
+  const [taskData,setTaskData]=useState<TaskDetails[]>([]);
+  const [updatedData, setUpdatedData] = useState<TaskDetails[]>(taskData);
+  const { data, error, refetch:refectingdata } =
+                 useQuery<TaskDetails[], Error>(
+                  'taskdata', getApiData,
+                  {
+                    onSuccess: (res) => {
+                      setTaskData(res);
+                      setUpdatedData(res);
+                    },
+                  });
   const [taskid, setTaskid] = useState("");
   const [isActive, setActive] = useState(false);
-  
 
   const handleSearch1 = (target:string):void => {
     setUpdatedData(taskData.filter((item:TaskDetails) => item.taskname.includes(target)));
@@ -44,33 +53,33 @@ const Home = () => {
     setTaskid("");
   };
 
-  const getApiData = async () => {
-    try {
-      const res = await axios.get("/tasks");
-      setTaskData(res.data);
-      setUpdatedData(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getApiData = async () => {
+  //   try {
+  //     const res = await axios.get("/tasks");
+  //     setTaskData(res.data);
+  //     setUpdatedData(res.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   //changing status of task after droping task
   const DragtoCompleted = ({task}:any) => {
     task.status = "completed";
     editTask(task.id, task);
-    getApiData();
+    refectingdata();
   };
-  
+
   const DragtoTodo = ({task}:any) => {
     task.status = "assigned";
     editTask(task.id, task);
-    getApiData();
+    refectingdata();
   };
 
   const DragtoProgress = ({task}:any) => {
     task.status = "progress";
     editTask(task.id, task);
-    getApiData();
+    refectingdata();
   };
 
   //Adding Drag functionality
@@ -98,10 +107,7 @@ const Home = () => {
     }),
   }));
 
-  useEffect(() => {
-    //fetching data from api
-    getApiData();
-  },[]);
+
 
   return (
     <>
