@@ -6,8 +6,8 @@ interface DeletedTaskProps {
 const DeletedTask: React.FC<DeletedTaskProps> = ({deletedtask}) =>{
   return (
     <tr>
-      <td> {deletedtask.taskname} </td>
-      <td> {deletedtask.assignee} </td>
+      <td>{deletedtask.taskname}</td>
+      <td>{deletedtask.assignee}</td>
       <td>{deletedtask.status}</td>
       <td>{deletedtask.priority}</td>
       <td>

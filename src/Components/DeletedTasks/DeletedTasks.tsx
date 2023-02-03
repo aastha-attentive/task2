@@ -2,19 +2,21 @@ import { useEffect, useState } from "react";
 import DeletedTask from "./DeletedTask";
 import axios from "../../service/axios";
 import "./style.css";
+import {getDeletedTasks} from "../../service/api";
 import { TaskDetails } from "../../Models/model";
+import { useQuery} from 'react-query';
 
 const DeletedTasks = () => {
   const [deletedTask, setDeletedTask] = useState<TaskDetails[]>([])
+  const { refetch:getdeletedtask } =
+                 useQuery<TaskDetails[], Error>(
+                  'taskdata', getDeletedTasks,
+                  {
+                    onSuccess: (res) => {
+                      setDeletedTask(res);
+                    },
+                  });
 
-  const getDeletedTasks = async () => {
-    try {
-      const res = await axios.get(`/deletedtasks`);
-      setDeletedTask(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const renderNotes = ():JSX.Element[] => {
     return deletedTask.map(deletedtask => {
@@ -22,24 +24,22 @@ const DeletedTasks = () => {
     })
   }
 
-  useEffect(() => {
-    getDeletedTasks();
-  }, []);
-
   return (
     <div>
       <div className="deletedtask">
         <h1>Deleted Task</h1>
       </div>
       <table>
-        <tr>
-          <th>Task Name</th>
-          <th>Assignee</th>
-          <th>Status</th>
-          <th>Priority</th>
-          <th>Deadline</th>
-        </tr>
-        {renderNotes()}
+        <tbody>
+          <tr>
+            <th>Task Name</th>
+            <th>Assignee</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Deadline</th>
+          </tr>
+          {renderNotes()}
+        </tbody>
       </table>
     </div>
   );

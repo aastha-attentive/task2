@@ -1,10 +1,7 @@
 import { useForm } from "../hooks/useForm";
-import { v4 as uuid } from 'uuid';
-import { useEffect, useState } from "react";
 import { editTask, addTask , getTaskById} from "../service/api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "../service/axios";
 import "./form.css";
 import { task } from "../hooks/useForm";
 import { useQuery,useMutation } from 'react-query'
@@ -51,21 +48,21 @@ const CreateTask:React.FC<CreateTaskProps> = ({ taskid, toggleClass }) => {
     }, 1000);
   };
 
-  const {  refetch:gettaskbyId }=useQuery<TaskDetails, Error>(
+  const {  refetch }=useQuery<TaskDetails, Error>(
    'iddata', 
    async () => {
     return await getTaskById(taskid);  
   },
    {
      onSuccess: (res:any) => {
-      setForm(res[0]);
-       console.log(res[0])
+      if(taskid!="") setForm(res[0]);
      },
    });
 
 
   return (
     <>
+    {console.log(inputValues)}
       <div className="wrapper">
         <div className="title">Add Task</div>
         <div className="form">

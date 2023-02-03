@@ -15,6 +15,11 @@ export const getTaskById = async (newtaskid:any) => {
     return res.data;
 };
 
+export const getDeletedTasks = async () => {
+    const res = await axios.get<TaskDetails[]>(`/deletedtasks`);
+    return res.data
+};
+
 
 const adddeletetask = async (task:TaskDetails) => {
   try {
