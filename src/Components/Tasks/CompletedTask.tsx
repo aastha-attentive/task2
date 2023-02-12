@@ -1,9 +1,10 @@
-
+import { useState } from "react";
 import { useDrag } from "react-dnd";
 import { deleteTask } from "../../service/api";
 import { isOverdue } from "../../service/overduetask";
 import "./style.css";
 import { TaskDetails } from "../../Models/model";
+import {Modal} from "elysium-ui";
 
 interface CompletedTaskProps {
   task:TaskDetails;
@@ -19,6 +20,22 @@ const CompTask:React.FC<CompletedTaskProps> = ({ task, setTaskid }) => {
       isDragging: !!monitor.isDragging(),
     }),
   }));
+
+  // const [open, setOpen] = useState(false);
+
+  //   const ctas = {
+  //       primary: {
+  //           label: 'OK',
+  //           color: 'secondary',
+  //           onClick: () => deleteTask(task)
+  //       },
+  //       secondary: {
+  //           label: 'Cancel',
+  //           color: 'secondary',
+  //           onClick: () => setOpen(false),
+  //           variant: 'text'
+  //       }
+  //   };
 
   return (
     <div
@@ -39,7 +56,14 @@ const CompTask:React.FC<CompletedTaskProps> = ({ task, setTaskid }) => {
           onClick={() => deleteTask(task)}
         ></i>
       </div>
-    </div>
+      {/* <Modal 
+            show={open}
+            onClose={() => setOpen(false)}
+            heading='Dialog title'
+            content='Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.'
+            ctas={ctas}
+      /> */}
+      </div>
   );
 };
 

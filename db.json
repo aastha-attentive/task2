@@ -1,94 +1,14 @@
 {
   "tasks": [
     {
-      "id": "e07ec7bc-7164-f53a-0bc8-81f7b3e26ba8",
-      "taskname": "task7",
-      "assignee": "Me",
-      "priority": "P1",
-      "days": "0",
-      "hours": "1",
-      "status": "completed",
-      "storypoints": "2023-01-27T08:56:59.800Z"
-    },
-    {
       "id": "e07ec7bc-7164-f53a-81f7b3e26ba8",
       "taskname": "task2",
       "assignee": "Mentor",
       "priority": "P1",
       "days": "1",
       "hours": "1",
-      "status": "progress",
-      "storypoints": "2023-01-27T08:56:59.800Z"
-    },
-    {
-      "id": "bc-7164-f53a-0bc8-81f7b3e26ba8",
-      "taskname": "task3",
-      "assignee": "Team Leader",
-      "priority": "P1",
-      "days": "0",
-      "hours": "1",
-      "status": "assigned",
-      "storypoints": "2023-01-26T08:56:59.800Z"
-    },
-    {
-      "id": "e07ec7bc-81f7b3e26ba8",
-      "taskname": "task4",
-      "assignee": "Me",
-      "priority": "P1",
-      "days": "0",
-      "hours": "1",
       "status": "completed",
       "storypoints": "2023-01-27T08:56:59.800Z"
-    },
-    {
-      "id": "f26b428f-2f21-8ae8-988f-60071eb06a5d",
-      "taskname": "task5",
-      "assignee": "Team Leader",
-      "priority": "P3",
-      "days": "7",
-      "hours": "2",
-      "status": "assigned",
-      "storypoints": "2023-01-27T09:33:25.753Z"
-    },
-    {
-      "id": "QFlbtbd",
-      "taskname": "aastha",
-      "assignee": "Team Leader",
-      "priority": "P3",
-      "days": "1",
-      "hours": "4",
-      "status": "assigned",
-      "storypoints": "2023-02-02T09:16:32.992Z"
-    },
-    {
-      "id": "ngBeh3N",
-      "taskname": "ashwani",
-      "assignee": "Team Leader",
-      "priority": "P2",
-      "days": "1",
-      "hours": "0",
-      "status": "completed",
-      "storypoints": "2023-02-02T09:25:25.722Z"
-    },
-    {
-      "id": "axMaCqn",
-      "taskname": "todo2",
-      "assignee": "Team Leader",
-      "priority": "P2",
-      "days": "1",
-      "hours": "0",
-      "status": "progress",
-      "storypoints": "2023-02-02T14:39:01.439Z"
-    },
-    {
-      "id": "ym8mMLg",
-      "taskname": "t",
-      "assignee": "Team Leader",
-      "priority": "P1",
-      "days": "1",
-      "hours": "2",
-      "status": "completed",
-      "storypoints": "2023-02-02T16:12:13.918Z"
     }
   ],
   "deletedtasks": [
@@ -131,6 +51,96 @@
       "hours": "2",
       "status": "assigned",
       "storypoints": "2023-02-02T13:45:56.094Z"
+    },
+    {
+      "id": "ym8mMLg",
+      "taskname": "t",
+      "assignee": "Team Leader",
+      "priority": "P1",
+      "days": "1",
+      "hours": "2",
+      "status": "progress",
+      "storypoints": "2023-02-02T16:12:13.918Z"
+    },
+    {
+      "id": "e07ec7bc-7164-f53a-0bc8-81f7b3e26ba8",
+      "taskname": "task7",
+      "assignee": "Me",
+      "priority": "P1",
+      "days": "0",
+      "hours": "1",
+      "status": "completed",
+      "storypoints": "2023-01-27T08:56:59.800Z"
+    },
+    {
+      "id": "QFlbtbd",
+      "taskname": "aastha",
+      "assignee": "Team Leader",
+      "priority": "P3",
+      "days": "1",
+      "hours": "4",
+      "status": "completed",
+      "storypoints": "2023-02-02T09:16:32.992Z"
+    },
+    {
+      "id": "ngBeh3N",
+      "taskname": "website",
+      "assignee": "Team Leader",
+      "priority": "P2",
+      "days": "1",
+      "hours": "0",
+      "status": "completed",
+      "storypoints": "2023-02-02T09:25:25.722Z"
+    },
+    {
+      "id": "e07ec7bc-81f7b3e26ba8",
+      "taskname": "task4",
+      "assignee": "Me",
+      "priority": "P1",
+      "days": "0",
+      "hours": "1",
+      "status": "completed",
+      "storypoints": "2023-01-27T08:56:59.800Z"
+    },
+    {
+      "id": "HiXfdqd",
+      "taskname": "todo",
+      "assignee": "",
+      "priority": "",
+      "days": 0,
+      "hours": 0,
+      "status": "completed",
+      "storypoints": "2023-02-09T17:32:41.695Z"
+    },
+    {
+      "id": "bc-7164-f53a-0bc8-81f7b3e26ba8",
+      "taskname": "task3",
+      "assignee": "Team Leader",
+      "priority": "P1",
+      "days": "0",
+      "hours": "1",
+      "status": "assigned",
+      "storypoints": "2023-01-26T08:56:59.800Z"
+    },
+    {
+      "id": "axMaCqn",
+      "taskname": "todo2",
+      "assignee": "Team Leader",
+      "priority": "P2",
+      "days": "1",
+      "hours": "0",
+      "status": "progress",
+      "storypoints": "2023-02-02T14:39:01.439Z"
+    },
+    {
+      "id": "f26b428f-2f21-8ae8-988f-60071eb06a5d",
+      "taskname": "task5",
+      "assignee": "Team Leader",
+      "priority": "P3",
+      "days": "7",
+      "hours": "2",
+      "status": "progress",
+      "storypoints": "2023-01-27T09:33:25.753Z"
     }
   ]
 }

@@ -14,7 +14,7 @@
     "axios": "^1.2.4",
     "bootstrap": "^5.2.3",
     "dateformat": "^5.0.3",
-    "elysium-ui": "git+https://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@github.com/attentive-platform/Elysium-UI.git#dev",
+    "elysium-ui": "git+https://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@github.com/attentive-platform/Elysium-UI.git#dev",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dnd": "^16.0.1",

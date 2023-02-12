@@ -1,18 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import CompTask from "./Tasks/CompletedTask";
 import CreateTask from "./CreateTask";
 import ProgressTask from "./Tasks/ProgressTask";
 import TodoTask from "./Tasks/TodoTask";
 import { useDrop } from "react-dnd";
-import axios from "../service/axios";
 import { editTask ,getApiData} from "../service/api";
-import { TaskDetails,Tasks } from "../Models/model";
+import { TaskDetails} from "../Models/model";
 import { useQuery} from 'react-query';
 
 const Home = () => {
   const [taskData,setTaskData]=useState<TaskDetails[]>([]);
   const [updatedData, setUpdatedData] = useState<TaskDetails[]>(taskData);
-  const { data, error, refetch:refectingdata } =
+  const {  refetch:refectingdata } =
                  useQuery<TaskDetails[], Error>(
                   'taskdata', getApiData,
                   {
@@ -83,7 +82,7 @@ const Home = () => {
   };
 
   //Adding Drag functionality
-  const [{isOver:isOver1},drop1] = useDrop(() => ({
+  const [,drop1] = useDrop(() => ({
     accept: "CARD",
     drop: (item:any, monitor) => DragtoCompleted(item),
     collect: (monitor) => ({
@@ -91,7 +90,7 @@ const Home = () => {
     }),
   }));
 
-  const [{isOver:isOver2},drop2] = useDrop(() => ({
+  const [,drop2] = useDrop(() => ({
     accept: "CARD",
     drop: (item:any, monitor) => DragtoTodo(item),
     collect: (monitor) => ({
@@ -99,7 +98,7 @@ const Home = () => {
     }),
   }));
 
-  const [{isOver:isOver3}, drop3] = useDrop(() => ({
+  const [, drop3] = useDrop(() => ({
     accept: "CARD",
     drop: (item:any, monitor) => DragtoProgress(item),
     collect: (monitor) => ({
